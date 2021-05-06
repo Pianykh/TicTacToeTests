@@ -16,7 +16,7 @@ namespace TicTacToeTests
             var ticTacToePage = new TicTacToePage(webDriver);
             ticTacToePage.GoToTicTacToePage()
                 .ClickPlayerSwitcher();
-            Assert.IsTrue(ticTacToePage.IsElementExcistOnPage("body > div.scores.p1"));            
+            Assert.IsTrue(ticTacToePage.IsElementExcistOnPage("body > div.scores.p2"));            
         }      
     }
 }
