@@ -11,13 +11,12 @@ namespace TicTacToeTests
     public class ChangePlayerTests : TestConfiguration
     {
         [Test]
-        public void ChangePlayer_ShouldChangePlayer()
+        public void ChangePlayer_ShouldChangeAiToSecondPlayer()
         {
             var ticTacToePage = new TicTacToePage(webDriver);
             ticTacToePage.GoToTicTacToePage()
                 .ClickPlayerSwitcher();
-            Assert.IsTrue(webDriver.FindElement(By.CssSelector("body > div.scores.p2")) != null);
-        }
-        
+            Assert.IsTrue(ticTacToePage.IsElementExcistOnPage("body > div.scores.p1"));            
+        }      
     }
 }
