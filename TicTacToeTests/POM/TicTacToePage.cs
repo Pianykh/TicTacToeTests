@@ -51,17 +51,23 @@ namespace TicTacToeTests
 
         public bool IsTwoPlayersModeOn()
         {
-            return IsElementExist(_scoresTwoPlayer);
+            return TestHelper.IsElementExist(_scoresTwoPlayer, _webDriver);               
         }
 
         public bool IsOnePlayersModeOn()
         {
-            return IsElementExist(_scoresOnePlayer);
+            return TestHelper.IsElementExist(_scoresOnePlayer, _webDriver);
         }
 
         public bool IsAudioOn()
         {
-            return IsElementVisible(_audioIndicator);
+            return TestHelper.IsElementVisible(_audioIndicator, _webDriver);                
+        }
+
+        public bool IsSquareMarked(int square)
+        {
+            By mark = By.CssSelector(sqareList[square].ToString().Replace("By.CssSelector: ", "") + " .x");
+            return TestHelper.IsElementVisible(mark, _webDriver);
         }
 
         public TicTacToePage CreateSquareList()
@@ -80,25 +86,7 @@ namespace TicTacToeTests
 
         public void ClickOnSquare(int square)
         {
-            _webDriver.FindElement(sqareList[square]).Click();
-        }
-
-        public bool IsElementExist(By by)
-        {
-            try
-            {
-                _webDriver.FindElement(by);
-            }
-            catch (NoSuchElementException)
-            {
-                return false;
-            }            
-            return true;
-        }
-
-        public bool IsElementVisible(By by)
-        {            
-           return _webDriver.FindElement(by).Displayed;            
-        }
+            _webDriver.FindElement(sqareList[square]).Click();            
+        }        
     }    
 }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace TicTacToeTests
 {
@@ -15,14 +16,15 @@ namespace TicTacToeTests
         [TestCase(5)]
         [TestCase(6)]
         [TestCase(7)]
-        [TestCase(8)]
-        
-        public void ChangePlayer_ShouldChangeAiToSecondPlayer(int index)
+        [TestCase(8)]        
+        public void MakeMark_ShouldMakeMark(int index)
         {
             var ticTacToePage = new TicTacToePage(webDriver);
             ticTacToePage.GoToTicTacToePage()
                 .CreateSquareList()
-                .ClickOnSquare(index);
+                .ClickOnSquare(index);            
+            Assert.IsTrue(ticTacToePage.IsSquareMarked(index));
+            
         }
     }
 }
