@@ -24,8 +24,6 @@ namespace TicTacToeTests
         public void TearDown()
         {
             webDriver.Quit();
-        }
-
-        
+        }        
     }
 }

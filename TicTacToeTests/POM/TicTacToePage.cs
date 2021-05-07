@@ -10,6 +10,7 @@ namespace TicTacToeTests
         private readonly IWebDriver _webDriver;
 
         private readonly static By _changePlayerButton = By.CssSelector("[class^=ties]");
+
         private readonly static By _squareTopLeftBlock = By.CssSelector("[class=\"square top left\"]");
         private readonly static By _squareTopBlock = By.CssSelector("[class=\"square top\"]");
         private readonly static By _squareTopRightBlock = By.CssSelector("[class=\"square top right\"]");
@@ -19,12 +20,13 @@ namespace TicTacToeTests
         private readonly static By _squareBottomLeftBlock = By.CssSelector("[class=\"square bottom left\"]");
         private readonly static By _squareBottomBlock = By.CssSelector("[class=\"square bottom\"]");
         private readonly static By _squareBottomRightBlock = By.CssSelector("[class=\"square bottom right\"]");
+        private readonly static List<By> sqareList = new List<By>();
+
         private readonly static By _scoresOnePlayer = By.CssSelector("body > div.scores.p1");
         private readonly static By _scoresTwoPlayer = By.CssSelector("body > div.scores.p2");
-        private readonly static List<By> sqareList = new List<By>();
+        
         private readonly static By _audioSwitcher = By.CssSelector("[class=mute]");
         private readonly static By _audioIndicator = By.CssSelector("svg > g > path[d ^= M67]");
-
 
         public TicTacToePage(IWebDriver webDriver)
         {

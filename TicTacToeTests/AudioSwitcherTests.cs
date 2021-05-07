@@ -5,7 +5,7 @@ using System.Text;
 
 namespace TicTacToeTests
 {
-    class AudioSwitcherTests : TestConfiguration
+    public class AudioSwitcherTests : TestConfiguration
     {
         [Test]
         public void AudioSwitcher_ShouldTurnOffAudio()
@@ -15,7 +15,7 @@ namespace TicTacToeTests
                 .ClickAudioSwitcher();
             Assert.IsFalse(ticTacToePage.IsAudioOn());
         }
-
+        
         [Test]
         public void AudioSwitcher_ShouldTurnOnAudio()
         {

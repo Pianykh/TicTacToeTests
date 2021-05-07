@@ -6,7 +6,7 @@ using System.Threading;
 
 namespace TicTacToeTests
 {
-    class MarkingBoardTests : TestConfiguration
+    public class MarkingBoardTests : TestConfiguration
     {
         [TestCase(0)]
         [TestCase(1)]
@@ -23,8 +23,7 @@ namespace TicTacToeTests
             ticTacToePage.GoToTicTacToePage()
                 .CreateSquareList()
                 .ClickOnSquare(index);            
-            Assert.IsTrue(ticTacToePage.IsSquareMarked(index));
-            
+            Assert.IsTrue(ticTacToePage.IsSquareMarked(index));            
         }
     }
 }
