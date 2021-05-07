@@ -33,11 +33,21 @@ namespace TicTacToeTests
             return this;
         }
 
-        public bool IsElementExcistOnPage(string selector)
+        public bool IsTwoPlayersModeOn()
+        {
+            return IsElementExist(_scoresTwoPlayer);
+        }
+
+        public bool IsOnePlayersModeOn()
+        {
+            return IsElementExist(_scoresOnePlayer);
+        }
+
+        public bool IsElementExist(By by)
         {
             try
             {
-                _webDriver.FindElement(By.CssSelector(selector));
+                _webDriver.FindElement(by);
             }
             catch (NoSuchElementException)
             {

@@ -16,7 +16,18 @@ namespace TicTacToeTests
             var ticTacToePage = new TicTacToePage(webDriver);
             ticTacToePage.GoToTicTacToePage()
                 .ClickPlayerSwitcher();
-            Assert.IsTrue(ticTacToePage.IsElementExcistOnPage("body > div.scores.p2"));            
-        }      
+            Assert.IsTrue(ticTacToePage.IsTwoPlayersModeOn());               
+        }
+
+        [Test]
+        public void ChangePlayer_ShouldChangeSecondPlayerToAi()
+        {
+            var ticTacToePage = new TicTacToePage(webDriver);
+            ticTacToePage.GoToTicTacToePage()
+                .ClickPlayerSwitcher();
+            if (ticTacToePage.IsTwoPlayersModeOn())
+                ticTacToePage.ClickPlayerSwitcher();
+            Assert.IsTrue(ticTacToePage.IsOnePlayersModeOn());
+        }
     }
 }
