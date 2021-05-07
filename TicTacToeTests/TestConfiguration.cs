@@ -20,6 +20,11 @@ namespace TicTacToeTests
             webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(7);
             webDriver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(60);            
         }
+        [TearDown]
+        public void TearDown()
+        {
+            webDriver.Quit();
+        }
 
         
     }

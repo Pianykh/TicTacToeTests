@@ -13,8 +13,18 @@ namespace TicTacToeTests
         private readonly static By _squareTopLeftBlock = By.CssSelector("[class=\"square top left\"]");
         private readonly static By _squareTopBlock = By.CssSelector("[class=\"square top\"]");
         private readonly static By _squareTopRightBlock = By.CssSelector("[class=\"square top right\"]");
+        private readonly static By _squareLeftBlock = By.CssSelector("[class=\"square left\"]");
+        private readonly static By _squareBlock = By.CssSelector("[class=\"square\"]");
+        private readonly static By _squareRightBlock = By.CssSelector("[class=\"square right\"]");
+        private readonly static By _squareBottomLeftBlock = By.CssSelector("[class=\"square bottom left\"]");
+        private readonly static By _squareBottomBlock = By.CssSelector("[class=\"square bottom\"]");
+        private readonly static By _squareBottomRightBlock = By.CssSelector("[class=\"square bottom right\"]");
         private readonly static By _scoresOnePlayer = By.CssSelector("body > div.scores.p1");
         private readonly static By _scoresTwoPlayer = By.CssSelector("body > div.scores.p2");
+        private readonly static List<By> sqareList = new List<By>();
+        private readonly static By _audioSwitcher = By.CssSelector("[class=mute]");
+        private readonly static By _audioIndicator = By.CssSelector("svg > g > path[d ^= M67]");
+
 
         public TicTacToePage(IWebDriver webDriver)
         {
@@ -33,6 +43,12 @@ namespace TicTacToeTests
             return this;
         }
 
+        public TicTacToePage ClickAudioSwitcher()
+        {
+            _webDriver.FindElement(_audioSwitcher).Click();
+            return this;
+        }
+
         public bool IsTwoPlayersModeOn()
         {
             return IsElementExist(_scoresTwoPlayer);
@@ -41,6 +57,30 @@ namespace TicTacToeTests
         public bool IsOnePlayersModeOn()
         {
             return IsElementExist(_scoresOnePlayer);
+        }
+
+        public bool IsAudioOn()
+        {
+            return IsElementVisible(_audioIndicator);
+        }
+
+        public TicTacToePage CreateSquareList()
+        {            
+            sqareList.Add(_squareTopLeftBlock);
+            sqareList.Add(_squareTopBlock);
+            sqareList.Add(_squareTopRightBlock);
+            sqareList.Add(_squareLeftBlock);
+            sqareList.Add(_squareBlock);
+            sqareList.Add(_squareRightBlock);
+            sqareList.Add(_squareBottomLeftBlock);
+            sqareList.Add(_squareBottomBlock);
+            sqareList.Add(_squareBottomRightBlock);
+            return this;
+        }
+
+        public void ClickOnSquare(int square)
+        {
+            _webDriver.FindElement(sqareList[square]).Click();
         }
 
         public bool IsElementExist(By by)
@@ -55,6 +95,10 @@ namespace TicTacToeTests
             }            
             return true;
         }
-    }
-    
+
+        public bool IsElementVisible(By by)
+        {            
+           return _webDriver.FindElement(by).Displayed;            
+        }
+    }    
 }
