@@ -23,7 +23,7 @@ namespace TicTacToeTests
         [TearDown]
         public void TearDown()
         {
-            webDriver.Quit();
+           webDriver.Quit();
         }        
     }
 }
